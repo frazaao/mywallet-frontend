@@ -1,0 +1,66 @@
+.loginContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background: white;
+    width: 90%;
+    height: 80%;
+    border-radius: 1rem;
+    padding: 4rem 2rem;
+}
+
+.loginContainer h1{
+    font-size: 4rem;
+    font-family: var(--title);
+}
+
+.loginContainer .loginForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.loginForm label{
+    width: 100%;
+}
+
+.loginForm label span{
+    display: block;
+    font-size: 1.5rem;
+    margin-bottom: .5rem;
+}
+
+.loginForm label input{
+    width: 100%;
+    height: 64px;
+    border-radius: 4px;
+    border: 1px solid #aaa;
+    font-size: 1.5rem;    
+    padding: .5rem 1rem;
+}
+
+.loginForm label input:focus{
+    border: 2px solid black;
+}
+
+.loginForm button{
+    font-size: 2rem;
+    background: var(--gradient);
+    border: none;
+    border-radius: .5rem;
+    padding: 0.75rem 4rem;
+    margin-top: 2rem;
+    color: white;
+}
+
+.loginForm a{
+    margin-top: 1rem;
+}
+
+.loginForm a span{
+    text-decoration: underline;
+    font-weight: bold;
+}

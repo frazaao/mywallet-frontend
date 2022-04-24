@@ -1,0 +1,43 @@
+.headerContainer{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.headerContent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    color: white;
+    gap: .6rem;
+}
+
+.headerContent h1{
+    font-family: var(--title);
+    font-weight: normal;
+    font-size: 3rem;
+}
+
+.buttonContainer{
+    display: flex;
+    gap: 1.5rem;
+}
+
+.buttonGreen{
+    border: none;
+    background: white;
+    padding: 0.5rem 1rem;
+    border-radius: .25rem;
+    color: var(--green);
+    font-size: 1.25rem;
+}
+
+.buttonRed{
+    border: none;
+    background: white;
+    padding: 0.5rem 1rem;
+    border-radius: .25rem;
+    color: var(--red);
+    font-size: 1.25rem;
+}
