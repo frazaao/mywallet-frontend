@@ -29,14 +29,22 @@ export default function TransactionsContainer({ setTransaction, setIsOpenTransac
             if(transaction.type == 'Withdraw'){
                 return transaction.amount
             }
-        }).filter((t)=> t != undefined);
+        }).filter((t)=> t&&t );
 
-        const withdraw = withdrawValue.reduce((acc,acc2) => acc + acc2 , 0)
-        const deposit = depositValue.reduce((acc,acc2) => acc + acc2 , 0)
+        let withdraw = 0;
+        let deposit = 0;
+
+        withdrawValue.forEach((t)=>{
+            t ? withdraw += t : t ;
+        })
+
+        depositValue.forEach((t)=>{
+            t ? deposit += t : t ;
+        })
 
         setDepositCount(deposit);
         setWithdrawCount(withdraw);
-        const total = deposit && withdraw ?  deposit - withdraw : 0;
+        const total = deposit - withdraw;
         setTotalCount(total)
 
     },[transactions]);
