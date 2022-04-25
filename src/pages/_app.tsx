@@ -8,7 +8,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   <AutheticationContextProvider>
     <TransactionsContextProvider>
       <Component {...pageProps} />
-    </TransactionsContextProvider>    
+    </TransactionsContextProvider>
   </AutheticationContextProvider>
   )
 }

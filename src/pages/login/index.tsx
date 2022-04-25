@@ -9,7 +9,7 @@ export default function Login(){
     const { isLogin, errors, authenticate } = useAuthentication();
 
     isLogin == true ? (
-        window.location.href = "/posts"
+        window.location.href = "/transactions"
     ) : (
         null
     );

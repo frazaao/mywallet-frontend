@@ -3,9 +3,10 @@ import styles from './styles.module.css';
 
 interface HeaderProps{
     user: UserInterface
+    setIsOpenModal: (value: boolean) => void
 }
 
-export default function Header({ user }: HeaderProps){
+export default function Header({ user, setIsOpenModal }: HeaderProps){
     return(
         <header className={styles.headerContainer}>
             <div className={styles.headerContent}>
@@ -16,6 +17,7 @@ export default function Header({ user }: HeaderProps){
                     <button 
                         type="button" 
                         className={styles.buttonGreen}
+                        onClick={()=> {setIsOpenModal(true)}}
                     >Nova Transação
                     </button>
 

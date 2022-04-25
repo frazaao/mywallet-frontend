@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import Header from "../../components/Header";
+import NewTransactionModal from "../../components/NewTransactionModal";
+import TransactionModal from "../../components/TransactionModal";
 import TransactionsContainer from "../../components/TransactionsContainer";
-import { useTransactions } from "../../Hooks/useTransactions";
+import { TransactionInterface } from '../../Hooks/useTransactions';
 
 export interface UserInterface {
     id:number,
@@ -12,7 +14,17 @@ export interface UserInterface {
 
 export default function Transactions() {
 
-    const { transactions } = useTransactions();
+    const [ isOpenNewTransactionModal, setIsOpenNewTransactionModal ] = useState(false);
+    const [ isOpenTransactionModal, setIsOpenTransactionModal ] = useState(false);
+    const [ transaction, setTransaction ] = useState<TransactionInterface>({
+        amount: 0,
+        created_at: "",
+        description: "",
+        id: 0,
+        title: "",
+        type: "Deposit"
+    });
+
     const [ user, setUser ] = useState<UserInterface>({
         id:0,
         name: "",
@@ -30,12 +42,23 @@ export default function Transactions() {
         .then(json => setUser(json))
     },[]);
 
-    console.log(user)
-
     return (
         <>
-            <Header user={user} />
-            <TransactionsContainer />
+            <Header user={user} setIsOpenModal={setIsOpenNewTransactionModal} />
+            <TransactionsContainer setTransaction={setTransaction} setIsOpenTransactionModal={setIsOpenTransactionModal} />
+            { isOpenNewTransactionModal && 
+            <NewTransactionModal 
+                isOpenModal={isOpenNewTransactionModal} 
+                setIsOpenModal={setIsOpenNewTransactionModal} 
+            /> }
+            {
+                isOpenTransactionModal &&
+                <TransactionModal
+                    transaction={transaction}
+                    isOpenModal={isOpenTransactionModal} 
+                    setIsOpenModal={setIsOpenTransactionModal}
+                />
+            }
         </>
     )
 }

@@ -3,30 +3,34 @@ import { useAuthentication } from './useAuthentication';
 
 
 interface TransactionsContext{
-    transactions: TransactionInterface[]
+    transactions: TransactionInterface[],
+    modalChange: boolean,
+    setModalChange: (value: boolean) => void
 }
 
 interface TransactionsContextProps{
     children: ReactNode
 }
 
-interface TransactionInterface{
+export interface TransactionInterface{
     id: number,
     title: string,
     description: string,
     amount: number,
     type: "Deposit" | "Withdraw",
-    created_at: Date
+    created_at: string
 }
 
 const transactionsContext = createContext<TransactionsContext>({
-    transactions: []
+    transactions: [],
+    modalChange: false,
+    setModalChange: () => {}
 });
 
 export function TransactionsContextProvider({ children }: TransactionsContextProps){
 
     const [ transactions, setTransactions ] = useState<TransactionInterface[]>([]);
-    const [ newTransaction, setNewTransaction ] = useState<Omit<TransactionInterface, "created_at">>()
+    const [ modalChange, setModalChange ] = useState(false);
     async function getTransactions() {
         const response = await fetch('https://mywallet-app-backend.herokuapp.com/transactions',{
             headers: {
@@ -40,14 +44,19 @@ export function TransactionsContextProvider({ children }: TransactionsContextPro
         }else{
             console.log(response)
         }
+        setModalChange(false)
     }
+
+    useEffect(() => {
+        modalChange && getTransactions(); 
+    },[modalChange]);
 
     useEffect(() => {
         getTransactions();
     },[]);
 
     return(
-        <transactionsContext.Provider value={{ transactions }}>
+        <transactionsContext.Provider value={{ transactions, modalChange, setModalChange }}>
             { children }
         </transactionsContext.Provider>
     )
@@ -57,8 +66,8 @@ export function useTransactions(){
 
     const context = useContext(transactionsContext);
 
-    const { transactions } = context;
+    const { transactions, modalChange, setModalChange } = context;
 
-    return { transactions }
+    return { transactions, modalChange, setModalChange }
     
 }

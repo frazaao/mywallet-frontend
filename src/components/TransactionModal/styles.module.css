@@ -1,0 +1,153 @@
+.modalContainer{
+    position: fixed;
+    background: rgba(0, 0, 0, 0.5);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    inset: 0;
+}
+
+.modalContent{
+    text-align: center;
+    background: white;
+    width: 90%;
+    margin: 0 auto;
+    border-radius: 1rem;
+    padding: 2rem;
+    position: relative;
+}
+
+.modalContent .controls{
+    position: absolute;
+    right: 0rem;
+    top: 0;
+}
+
+.modalContent .controls button{
+    color: white;
+    border: none;
+    padding: .5rem .875rem;
+    font-size: 1.5rem;
+    border-radius: 0 0 .25rem .25rem;
+    text-align: center;
+    margin-left: 2rem;
+    outline: none;
+}
+
+.editButton{
+    background: var(--blue);
+}
+
+.deleteButton{
+    background: var(--red);
+}
+
+.modalContent h1{
+    font-weight: normal;
+    margin: 2rem 0;
+}
+
+.modalForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.modalForm label{
+    margin-bottom: 1.5rem;
+}
+
+.modalForm label, .modalForm label input {
+    width: 100%;
+    text-align:left;
+    font-size: 1.75rem;
+}
+
+.modalForm label input:not([type=radio]){
+    height: 3.5rem;
+    padding: 0.5rem;
+    border: 1px solid #aaa;
+    border-radius: .25rem;
+    outline: none;
+}
+
+.modalForm label input:not([type=radio]):focus{
+    border: 2px solid black;
+}
+
+.typeLabel{
+    display: flex;
+    flex-direction: column;
+}
+
+.typeLabel div{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 2rem;
+}
+
+.typeLabel div label{
+    text-align: center;
+    padding: .5rem;
+    border-radius: .25rem;
+    transition: all .2s ease-in-out;
+}
+
+.typeLabel div label.depositInput{    
+    border: 2px solid var(--green);
+    background: rgba(0, 210, 144, 0.1);
+    color: var(--green);
+}
+
+.typeLabel div label.withdrawInput{    
+    border: 2px solid var(--red);
+    background: rgba(234, 84, 84, 0.1);
+    color: var(--red);
+}
+
+.typeLabel div input[type=radio]:checked+label.depositInput{
+    background: var(--green);
+    color: white;
+}
+
+.typeLabel div input[type=radio]:checked+label.withdrawInput{
+    background: var(--red);
+    color: white;
+}
+
+.typeLabel div input[type=radio]{
+    display:none
+}
+
+.modalForm .buttonContainer{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.buttonContainer button{
+    display: flex;
+    flex: 1;
+    padding: 1rem 0;
+    font-size: 1.5rem;
+    justify-content: center;
+    border: none;
+    border-radius: .25rem;
+    color: white;
+}
+
+.buttonRed{
+    background: var(--red);
+}
+
+.buttonGreen{
+    background: var(--green);
+}
+
+.buttonContainer button:hover{
+    filter: brightness(0.9);
+}
