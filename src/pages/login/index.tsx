@@ -22,7 +22,7 @@ export default function Login(){
                 password: passwordRef.current?.value
             })
         }
-    },[]);
+    },[authenticate]);
 
     useEffect(() => {
         console.log(errors)
